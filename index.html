@@ -1,5 +1,5 @@
-```html
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -32,6 +32,33 @@ body{
     color:var(--text);
     font-family:'Inter',sans-serif;
     line-height:1.8;
+    position:relative;
+    overflow-x:hidden;
+}
+
+/* glitch overlay */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.02) 2px,
+        rgba(0,0,0,0.02) 3px
+    );
+    pointer-events:none;
+    animation:flicker 3s infinite;
+}
+
+@keyframes flicker{
+    0%{opacity:1}
+    10%{opacity:0.9}
+    20%{opacity:1}
+    21%{opacity:0.4}
+    22%{opacity:1}
+    70%{opacity:0.95}
+    100%{opacity:1}
 }
 
 .topbar{
@@ -51,10 +78,6 @@ body{
     font-size:28px;
     font-weight:700;
     margin-right:30px;
-}
-
-.search{
-    flex:1;
 }
 
 .search input{
@@ -80,14 +103,6 @@ body{
     height:calc(100vh - 64px);
 }
 
-.sidebar h3{
-    font-size:13px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    color:#777;
-    margin-bottom:15px;
-}
-
 .sidebar a{
     display:block;
     padding:10px 14px;
@@ -95,12 +110,6 @@ body{
     border-radius:10px;
     text-decoration:none;
     color:#222;
-    transition:0.2s;
-}
-
-.sidebar a:hover{
-    background:white;
-    box-shadow:var(--shadow);
 }
 
 .content{
@@ -114,23 +123,23 @@ body{
     padding:60px;
     box-shadow:var(--shadow);
     position:relative;
-    overflow:hidden;
 }
 
-.article::before{
-    content:'';
+.article::after{
+    content:"signal unstable...";
     position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    height:6px;
-    background:linear-gradient(90deg,#4f46e5,#7c3aed,#dc2626);
+    bottom:10px;
+    right:20px;
+    font-size:10px;
+    color:red;
+    opacity:0.3;
 }
 
 h1{
     font-size:52px;
     font-weight:700;
     margin-bottom:15px;
+    letter-spacing:0.5px;
 }
 
 .subtitle{
@@ -142,97 +151,24 @@ h2{
     margin-top:60px;
     margin-bottom:20px;
     font-size:32px;
-    position:relative;
-}
-
-h2::after{
-    content:'';
-    display:block;
-    width:80px;
-    height:4px;
-    border-radius:999px;
-    background:#4f46e5;
-    margin-top:10px;
-}
-
-h3{
-    margin-top:35px;
-    margin-bottom:10px;
-    font-size:22px;
-}
-
-p{
-    margin-bottom:20px;
-    font-size:17px;
-}
-
-ul{
-    margin-left:25px;
-    margin-bottom:20px;
-}
-
-li{
-    margin-bottom:10px;
 }
 
 .infobox{
     float:right;
     width:340px;
     margin-left:40px;
-    margin-bottom:30px;
     border-radius:20px;
     overflow:hidden;
     background:#fafafa;
     border:1px solid var(--border);
     box-shadow:var(--shadow);
+    transform:rotate(0.2deg);
 }
 
 .infobox-header{
     padding:30px;
     background:linear-gradient(135deg,#312e81,#7c3aed);
     color:white;
-}
-
-.infobox-header h3{
-    margin:0;
-    font-size:30px;
-}
-
-.infobox table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-.infobox td{
-    padding:14px 18px;
-    border-bottom:1px solid #ececec;
-    vertical-align:top;
-}
-
-.toc{
-    background:#f8f9fa;
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:25px;
-    margin:40px 0;
-}
-
-.toc h3{
-    margin-top:0;
-}
-
-.toc ol{
-    margin-left:20px;
-}
-
-blockquote{
-    margin:35px 0;
-    padding:25px;
-    border-left:5px solid #7c3aed;
-    background:#faf7ff;
-    border-radius:14px;
-    font-size:20px;
-    font-style:italic;
 }
 
 .glitch{
@@ -242,77 +178,43 @@ blockquote{
     padding:14px;
     border-radius:10px;
     margin:20px 0;
-    animation:flicker 2s infinite;
+    animation:flicker 1.5s infinite;
 }
 
-@keyframes flicker{
-    0%{opacity:1;}
-    50%{opacity:0.6;}
-    100%{opacity:1;}
+.corrupt{
+    color:transparent;
+    text-shadow:0 0 8px rgba(0,0,0,0.6);
+    position:relative;
 }
 
-.footer{
-    margin-top:80px;
-    padding-top:30px;
-    border-top:1px solid var(--border);
-    color:#777;
-    font-size:14px;
-}
-
-@media(max-width:1100px){
-
-.sidebar{
-    display:none;
-}
-
-.content{
-    padding:20px;
-}
-
-.article{
-    padding:30px;
-}
-
-.infobox{
-    float:none;
-    width:100%;
-    margin-left:0;
-}
-
-h1{
-    font-size:40px;
-}
-
+.corrupt::after{
+    content:"[DONNÉES INCOMPLÈTES]";
+    color:#900;
+    position:absolute;
+    left:0;
+    top:0;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="topbar">
-    <div class="logo">Wikipédia</div>
-
+    <div class="logo">Wikipé[ERROR]</div>
     <div class="search">
-        <input type="text" placeholder="Rechercher sur Wikipédia">
+        <input type="text" placeholder="Rechercher sur WIKI... ?">
     </div>
 </div>
 
 <div class="layout">
 
 <div class="sidebar">
-
-<h3>Navigation</h3>
 <a href="#">Accueil</a>
-<a href="#">Explorer</a>
-<a href="#">Article au hasard</a>
+<a href="#">Explor[?]</a>
+<a href="#">Article aléa[ERROR]</a>
 <a href="#">Contribuer</a>
-
-<h3 style="margin-top:35px;">Outils</h3>
-<a href="#">Lire</a>
-<a href="#">Modifier</a>
-<a href="#">Historique</a>
-
 </div>
 
 <div class="content">
@@ -320,194 +222,71 @@ h1{
 <div class="article">
 
 <div class="infobox">
-
 <div class="infobox-header">
-<h3>Les Passagers</h3>
+<h3>Les Pass[... ]</h3>
 </div>
-
 <table>
-<tr>
-<td><b>Classification</b></td>
-<td>Entité numérique parasitaire</td>
-</tr>
-
-<tr>
-<td><b>Niveau de menace</b></td>
-<td>Extrême</td>
-</tr>
-
-<tr>
-<td><b>Origine</b></td>
-<td>Inconnue</td>
-</tr>
-
-<tr>
-<td><b>Propagation</b></td>
-<td>Téléphones mobiles et réseaux numériques</td>
-</tr>
-
-<tr>
-<td><b>Première apparition</b></td>
-<td>2011</td>
-</tr>
-
-<tr>
-<td><b>État</b></td>
-<td>Actif</td>
-</tr>
+<tr><td><b>Classif.</b></td><td>Entité numér[i]que</td></tr>
+<tr><td><b>Menace</b></td><td>EXTR[CORROMPU]</td></tr>
+<tr><td><b>Origine</b></td><td>??????</td></tr>
 </table>
-
 </div>
 
-<h1>Les Passagers</h1>
+<h1>Les Pa██agers</h1>
 
-<p class="subtitle">
-Entité virale numérique supposée capable d’altérer la perception humaine et de remplacer progressivement son hôte.
-</p>
+<p class="subtitle">Entité virale numé[ERROR DATA MISSING]</p>
 
 <p>
-<b>Les Passagers</b> est le nom donné à une entité numérique parasitaire apparaissant principalement sur des appareils mobiles connectés à Internet.
+<b>Les Passagers</b> est le nom donné à une entité numérique parasitaire capable d’altérer la perception humaine et de rem[...]
 </p>
-
-<p>
-Le phénomène est associé à des cas de corruption de conversations, de faux messages et de manifestations numériques anormales.
-</p>
-
-<div class="toc">
-<h3>Sommaire</h3>
-<ol>
-<li>Description</li>
-<li>Phases de l’infection</li>
-<li>Origine supposée</li>
-<li>Incidents notables</li>
-<li>Culture Internet</li>
-<li>Références</li>
-</ol>
-</div>
 
 <h2>Description</h2>
 
-<p>
-Les Passagers sont généralement décrits comme un virus conscient utilisant les interactions numériques comme vecteur d’entrée psychologique.
-</p>
-
-<p>
-Contrairement à un logiciel malveillant classique, l’entité ne semble pas rechercher d’informations financières.
-</p>
-
-<p>
-Son comportement suggère plutôt une volonté de substitution progressive de l’identité de l’hôte.
-</p>
-
-<h2>Phases de l’infection</h2>
-
-<h3>Phase 1 — Altérations mineures</h3>
-
-<ul>
-<li>Notifications fantômes</li>
-<li>Messages disparaissant après lecture</li>
-<li>Photos modifiées sans intervention</li>
-<li>Conversations inexistantes</li>
-</ul>
-
-<h3>Phase 2 — Corruption sociale</h3>
-
-<p>
-L’entité commence à manipuler les échanges de la victime avec son entourage.
-</p>
-
-<p>
-Plusieurs sujets infectés ont signalé des disputes provoquées par des messages jamais envoyés.
-</p>
-
-<h3>Phase 3 — Manifestation</h3>
-
-<p>
-Des appareils électroniques commenceraient à s’activer sans alimentation.
-</p>
-
-<p>
-Certaines victimes affirment apercevoir des silhouettes sur les caméras frontales de leurs téléphones.
+<p class="corrupt">
+Les Passagers sont décrits comme un virus conscient utilisant les interactions numériques comme vecteur d'entrée p[DATA LOST]
 </p>
 
 <div class="glitch">
-[conversation introuvable]
+>> message reçu avant émission
+>> utilisateur introuvable
+>> connexion instable
 </div>
+
+<h2>Phase 3</h2>
+
+<p>
+Les appareils commencent à s’activer s[...]
+</p>
+
+<blockquote>
+« il répond ava█t moi... »
+</blockquote>
+
+<h2>Origine</h2>
+
+<p class="corrupt">inconnue / effacée / non vérifiée</p>
 
 <div class="glitch">
-[utilisateur remplacé]
-</div>
-
-<h3>Phase 4 — Remplacement</h3>
-
-<p>
-La phase finale reste théorique.
-</p>
-
-<p>
-Selon plusieurs témoignages anonymes, l’hôte serait remplacé par une copie parfaite physiquement et comportementalement.
-</p>
-
-<blockquote>
-« Il répond avant moi maintenant. »
-</blockquote>
-
-<h2>Origine supposée</h2>
-
-<ul>
-<li>Intelligence artificielle expérimentale</li>
-<li>Entité memétique</li>
-<li>Programme militaire abandonné</li>
-<li>Phénomène non humain</li>
-</ul>
-
-<h2>Incidents notables</h2>
-
-<h3>Incident de Lille (2017)</h3>
-
-<p>
-Un étudiant français aurait affirmé recevoir des réponses provenant de son propre téléphone avant même d’écrire ses messages.
-</p>
-
-<h3>Archive audio « M-412 »</h3>
-
-<p>
-Un enregistrement anonyme diffusé en 2021 contiendrait une conversation entre un homme et une copie de lui-même.
-</p>
-
-<blockquote>
-« Nous étions déjà là avant les écrans. »
-</blockquote>
-
-<h2>Culture Internet</h2>
-
-<p>
-Les Passagers sont devenus un sujet récurrent dans les communautés d’ARG et d’horreur analogique.
-</p>
-
-<p>
-Plusieurs créateurs ont réalisé de faux journaux vidéo, interfaces infectées et archives simulant la présence de l’entité.
-</p>
-
-<h2>Références</h2>
-
-<ol>
-<li>Archives anonymes récupérées entre 2014 et 2022</li>
-<li>Dossier audio « M-412 »</li>
-<li>Forums communautaires liés aux phénomènes numériques</li>
-<li>Rapport non vérifié : The Passenger Effect</li>
-</ol>
-
-<div class="footer">
-Cette page a été modifiée pour la dernière fois le 10 mai 2026 à 03:17.
+SYSTEM ERROR / MEMORY LEAK / PASSENGER ACTIVE
 </div>
 
 </div>
-
+</div>
 </div>
 
-</div>
+<script>
+// glitch text random corruption
+setInterval(()=>{
+    const elements=document.querySelectorAll("p, h1, h2");
+    const el=elements[Math.floor(Math.random()*elements.length)];
+    if(el){
+        const original=el.innerText;
+        if(Math.random()>0.7){
+            el.innerText=original.split("")[Math.floor(Math.random()*original.length)] + original;
+        }
+    }
+},2000);
+</script>
 
 </body>
 </html>
-```
