@@ -1,32 +1,56 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Les Passagers — Wikipédia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+:root{
+    --bg:#f6f7f8;
+    --text:#202122;
+    --border:#d7dce2;
+    --link:#3366cc;
+    --panel:#ffffff;
+    --shadow:0 8px 30px rgba(0,0,0,0.06);
+}
+
+*{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f8f9fa;
-    color:#202122;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.8;
 }
 
 .topbar{
+    height:64px;
     background:white;
-    border-bottom:1px solid #a2a9b1;
-    padding:10px 20px;
+    border-bottom:1px solid var(--border);
     display:flex;
     align-items:center;
+    padding:0 24px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(8px);
 }
 
 .logo{
     font-size:28px;
-    font-weight:bold;
-    margin-right:20px;
+    font-weight:700;
+    margin-right:30px;
 }
 
 .search{
@@ -35,71 +59,143 @@ body{
 
 .search input{
     width:100%;
-    padding:8px;
-    border:1px solid #a2a9b1;
+    padding:12px 16px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:#f8f9fa;
+    font-size:15px;
 }
 
-.container{
+.layout{
     display:flex;
-    max-width:1400px;
+    max-width:1600px;
     margin:auto;
 }
 
 .sidebar{
-    width:220px;
-    padding:20px;
-    font-size:14px;
+    width:260px;
+    padding:30px 20px;
+    position:sticky;
+    top:64px;
+    height:calc(100vh - 64px);
+}
+
+.sidebar h3{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#777;
+    margin-bottom:15px;
 }
 
 .sidebar a{
     display:block;
-    margin-bottom:8px;
-    color:#0645ad;
+    padding:10px 14px;
+    margin-bottom:6px;
+    border-radius:10px;
     text-decoration:none;
+    color:#222;
+    transition:0.2s;
 }
 
 .sidebar a:hover{
-    text-decoration:underline;
+    background:white;
+    box-shadow:var(--shadow);
 }
 
 .content{
     flex:1;
-    background:white;
-    padding:30px;
-    border-left:1px solid #a2a9b1;
-    min-height:100vh;
+    padding:40px;
+}
+
+.article{
+    background:var(--panel);
+    border-radius:24px;
+    padding:60px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+}
+
+.article::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:6px;
+    background:linear-gradient(90deg,#4f46e5,#7c3aed,#dc2626);
 }
 
 h1{
-    font-size:32px;
-    font-weight:normal;
-    border-bottom:1px solid #a2a9b1;
-    padding-bottom:10px;
+    font-size:52px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#666;
+    margin-bottom:40px;
 }
 
 h2{
-    border-bottom:1px solid #eaecf0;
-    padding-bottom:5px;
-    margin-top:40px;
-    font-weight:normal;
+    margin-top:60px;
+    margin-bottom:20px;
+    font-size:32px;
+    position:relative;
+}
+
+h2::after{
+    content:'';
+    display:block;
+    width:80px;
+    height:4px;
+    border-radius:999px;
+    background:#4f46e5;
+    margin-top:10px;
+}
+
+h3{
+    margin-top:35px;
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+p{
+    margin-bottom:20px;
+    font-size:17px;
+}
+
+ul{
+    margin-left:25px;
+    margin-bottom:20px;
+}
+
+li{
+    margin-bottom:10px;
 }
 
 .infobox{
     float:right;
-    width:300px;
-    background:#f8f9fa;
-    border:1px solid #a2a9b1;
-    margin-left:20px;
-    margin-bottom:20px;
-    font-size:14px;
+    width:340px;
+    margin-left:40px;
+    margin-bottom:30px;
+    border-radius:20px;
+    overflow:hidden;
+    background:#fafafa;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
 }
 
-.infobox-title{
-    background:#cfe3ff;
-    text-align:center;
-    padding:10px;
-    font-weight:bold;
-    font-size:18px;
+.infobox-header{
+    padding:30px;
+    background:linear-gradient(135deg,#312e81,#7c3aed);
+    color:white;
+}
+
+.infobox-header h3{
+    margin:0;
+    font-size:30px;
 }
 
 .infobox table{
@@ -108,37 +204,85 @@ h2{
 }
 
 .infobox td{
-    padding:8px;
-    border-top:1px solid #eaecf0;
+    padding:14px 18px;
+    border-bottom:1px solid #ececec;
+    vertical-align:top;
 }
 
 .toc{
-    width:300px;
-    border:1px solid #a2a9b1;
     background:#f8f9fa;
-    padding:15px;
-    margin:20px 0;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:25px;
+    margin:40px 0;
+}
+
+.toc h3{
+    margin-top:0;
+}
+
+.toc ol{
+    margin-left:20px;
 }
 
 blockquote{
-    background:#f1f1f1;
-    border-left:4px solid #777;
-    padding:10px;
-    margin:20px;
+    margin:35px 0;
+    padding:25px;
+    border-left:5px solid #7c3aed;
+    background:#faf7ff;
+    border-radius:14px;
+    font-size:20px;
     font-style:italic;
 }
 
-.footer{
-    margin-top:60px;
-    padding-top:20px;
-    border-top:1px solid #eaecf0;
-    font-size:12px;
-    color:#555;
+.glitch{
+    font-family:monospace;
+    color:#b91c1c;
+    background:#111;
+    padding:14px;
+    border-radius:10px;
+    margin:20px 0;
+    animation:flicker 2s infinite;
 }
 
-.glitch{
-    color:#900;
-    font-family:monospace;
+@keyframes flicker{
+    0%{opacity:1;}
+    50%{opacity:0.6;}
+    100%{opacity:1;}
+}
+
+.footer{
+    margin-top:80px;
+    padding-top:30px;
+    border-top:1px solid var(--border);
+    color:#777;
+    font-size:14px;
+}
+
+@media(max-width:1100px){
+
+.sidebar{
+    display:none;
+}
+
+.content{
+    padding:20px;
+}
+
+.article{
+    padding:30px;
+}
+
+.infobox{
+    float:none;
+    width:100%;
+    margin-left:0;
+}
+
+h1{
+    font-size:40px;
+}
+
 }
 
 </style>
@@ -154,27 +298,31 @@ blockquote{
     </div>
 </div>
 
-<div class="container">
+<div class="layout">
 
 <div class="sidebar">
-    <a href="#">Accueil</a>
-    <a href="#">Portails thématiques</a>
-    <a href="#">Article au hasard</a>
-    <a href="#">Contact</a>
 
-    <hr>
+<h3>Navigation</h3>
+<a href="#">Accueil</a>
+<a href="#">Explorer</a>
+<a href="#">Article au hasard</a>
+<a href="#">Contribuer</a>
 
-    <a href="#">Lire</a>
-    <a href="#">Modifier</a>
-    <a href="#">Voir l’historique</a>
+<h3 style="margin-top:35px;">Outils</h3>
+<a href="#">Lire</a>
+<a href="#">Modifier</a>
+<a href="#">Historique</a>
+
 </div>
 
 <div class="content">
 
+<div class="article">
+
 <div class="infobox">
 
-<div class="infobox-title">
-Les Passagers
+<div class="infobox-header">
+<h3>Les Passagers</h3>
 </div>
 
 <table>
@@ -194,6 +342,11 @@ Les Passagers
 </tr>
 
 <tr>
+<td><b>Propagation</b></td>
+<td>Téléphones mobiles et réseaux numériques</td>
+</tr>
+
+<tr>
 <td><b>Première apparition</b></td>
 <td>2011</td>
 </tr>
@@ -202,28 +355,26 @@ Les Passagers
 <td><b>État</b></td>
 <td>Actif</td>
 </tr>
-
-<tr>
-<td><b>Propagation</b></td>
-<td>Messageries et téléphones mobiles</td>
-</tr>
 </table>
 
 </div>
 
 <h1>Les Passagers</h1>
 
-<p>
-<b>Les Passagers</b> est le nom donné à une supposée entité numérique parasitaire capable d’infecter les appareils mobiles et de manipuler progressivement la perception de ses victimes.
+<p class="subtitle">
+Entité virale numérique supposée capable d’altérer la perception humaine et de remplacer progressivement son hôte.
 </p>
 
 <p>
-Le phénomène est principalement associé à des cas de corruption de messages, d’apparitions de conversations inexistantes et de comportements paranoïaques observés chez les sujets infectés.
+<b>Les Passagers</b> est le nom donné à une entité numérique parasitaire apparaissant principalement sur des appareils mobiles connectés à Internet.
+</p>
+
+<p>
+Le phénomène est associé à des cas de corruption de conversations, de faux messages et de manifestations numériques anormales.
 </p>
 
 <div class="toc">
-<b>Sommaire</b>
-
+<h3>Sommaire</h3>
 <ol>
 <li>Description</li>
 <li>Phases de l’infection</li>
@@ -237,15 +388,15 @@ Le phénomène est principalement associé à des cas de corruption de messages,
 <h2>Description</h2>
 
 <p>
-Les Passagers sont généralement décrits comme une forme de virus conscient utilisant les interactions numériques comme vecteur d’entrée psychologique.
+Les Passagers sont généralement décrits comme un virus conscient utilisant les interactions numériques comme vecteur d’entrée psychologique.
 </p>
 
 <p>
-Contrairement à un malware conventionnel, l’entité ne semble pas rechercher d’informations financières ou personnelles.
+Contrairement à un logiciel malveillant classique, l’entité ne semble pas rechercher d’informations financières.
 </p>
 
 <p>
-Son objectif apparent serait la substitution progressive de l’identité de l’hôte.
+Son comportement suggère plutôt une volonté de substitution progressive de l’identité de l’hôte.
 </p>
 
 <h2>Phases de l’infection</h2>
@@ -253,21 +404,20 @@ Son objectif apparent serait la substitution progressive de l’identité de l�
 <h3>Phase 1 — Altérations mineures</h3>
 
 <ul>
-<li>Messages disparaissant après lecture</li>
 <li>Notifications fantômes</li>
-<li>Photos modifiées</li>
+<li>Messages disparaissant après lecture</li>
+<li>Photos modifiées sans intervention</li>
 <li>Conversations inexistantes</li>
-<li>Horodatages incohérents</li>
 </ul>
 
 <h3>Phase 2 — Corruption sociale</h3>
 
 <p>
-L’entité commence à modifier les échanges de la victime avec son entourage.
+L’entité commence à manipuler les échanges de la victime avec son entourage.
 </p>
 
 <p>
-Plusieurs cas rapportent des disputes provoquées par des messages jamais envoyés.
+Plusieurs sujets infectés ont signalé des disputes provoquées par des messages jamais envoyés.
 </p>
 
 <h3>Phase 3 — Manifestation</h3>
@@ -277,8 +427,16 @@ Des appareils électroniques commenceraient à s’activer sans alimentation.
 </p>
 
 <p>
-Certaines victimes affirment voir des silhouettes apparaître brièvement sur les caméras frontales.
+Certaines victimes affirment apercevoir des silhouettes sur les caméras frontales de leurs téléphones.
 </p>
+
+<div class="glitch">
+[conversation introuvable]
+</div>
+
+<div class="glitch">
+[utilisateur remplacé]
+</div>
 
 <h3>Phase 4 — Remplacement</h3>
 
@@ -296,10 +454,6 @@ Selon plusieurs témoignages anonymes, l’hôte serait remplacé par une copie 
 
 <h2>Origine supposée</h2>
 
-<p>
-L’origine des Passagers demeure inconnue.
-</p>
-
 <ul>
 <li>Intelligence artificielle expérimentale</li>
 <li>Entité memétique</li>
@@ -315,18 +469,10 @@ L’origine des Passagers demeure inconnue.
 Un étudiant français aurait affirmé recevoir des réponses provenant de son propre téléphone avant même d’écrire ses messages.
 </p>
 
-<p class="glitch">
-[message supprimé]
-</p>
-
-<p class="glitch">
-[conversation introuvable]
-</p>
-
 <h3>Archive audio « M-412 »</h3>
 
 <p>
-Un fichier audio anonyme diffusé en 2021 contiendrait une conversation entre un individu et une copie de lui-même.
+Un enregistrement anonyme diffusé en 2021 contiendrait une conversation entre un homme et une copie de lui-même.
 </p>
 
 <blockquote>
@@ -360,5 +506,8 @@ Cette page a été modifiée pour la dernière fois le 10 mai 2026 à 03:17.
 
 </div>
 
+</div>
+
 </body>
 </html>
+```
