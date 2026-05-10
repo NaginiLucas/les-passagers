@@ -2,79 +2,363 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Les Passagers — Wikipédia</title>
 
 <style>
+
 body{
-    font-family: sans-serif;
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
     background:#f8f9fa;
     color:#202122;
-    max-width:1000px;
-    margin:auto;
-    padding:40px;
 }
 
-h1{
-    border-bottom:1px solid #aaa;
-    padding-bottom:10px;
-}
-
-.infobox{
-    float:right;
-    width:280px;
+.topbar{
     background:white;
-    border:1px solid #aaa;
-    padding:10px;
-    margin-left:20px;
+    border-bottom:1px solid #a2a9b1;
+    padding:10px 20px;
+    display:flex;
+    align-items:center;
 }
 
-.infobox h3{
-    text-align:center;
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    margin-right:20px;
 }
 
-a{
+.search{
+    flex:1;
+}
+
+.search input{
+    width:100%;
+    padding:8px;
+    border:1px solid #a2a9b1;
+}
+
+.container{
+    display:flex;
+    max-width:1400px;
+    margin:auto;
+}
+
+.sidebar{
+    width:220px;
+    padding:20px;
+    font-size:14px;
+}
+
+.sidebar a{
+    display:block;
+    margin-bottom:8px;
     color:#0645ad;
     text-decoration:none;
 }
 
-a:hover{
+.sidebar a:hover{
     text-decoration:underline;
 }
-</style>
 
+.content{
+    flex:1;
+    background:white;
+    padding:30px;
+    border-left:1px solid #a2a9b1;
+    min-height:100vh;
+}
+
+h1{
+    font-size:32px;
+    font-weight:normal;
+    border-bottom:1px solid #a2a9b1;
+    padding-bottom:10px;
+}
+
+h2{
+    border-bottom:1px solid #eaecf0;
+    padding-bottom:5px;
+    margin-top:40px;
+    font-weight:normal;
+}
+
+.infobox{
+    float:right;
+    width:300px;
+    background:#f8f9fa;
+    border:1px solid #a2a9b1;
+    margin-left:20px;
+    margin-bottom:20px;
+    font-size:14px;
+}
+
+.infobox-title{
+    background:#cfe3ff;
+    text-align:center;
+    padding:10px;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.infobox table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.infobox td{
+    padding:8px;
+    border-top:1px solid #eaecf0;
+}
+
+.toc{
+    width:300px;
+    border:1px solid #a2a9b1;
+    background:#f8f9fa;
+    padding:15px;
+    margin:20px 0;
+}
+
+blockquote{
+    background:#f1f1f1;
+    border-left:4px solid #777;
+    padding:10px;
+    margin:20px;
+    font-style:italic;
+}
+
+.footer{
+    margin-top:60px;
+    padding-top:20px;
+    border-top:1px solid #eaecf0;
+    font-size:12px;
+    color:#555;
+}
+
+.glitch{
+    color:#900;
+    font-family:monospace;
+}
+
+</style>
 </head>
+
 <body>
 
-<div class="infobox">
-<h3>Les Passagers</h3>
+<div class="topbar">
+    <div class="logo">Wikipédia</div>
 
-<p><b>Classification :</b> Entité numérique parasitaire</p>
-<p><b>Niveau de menace :</b> Extrême</p>
-<p><b>Origine :</b> Inconnue</p>
-<p><b>État :</b> Actif</p>
+    <div class="search">
+        <input type="text" placeholder="Rechercher sur Wikipédia">
+    </div>
+</div>
+
+<div class="container">
+
+<div class="sidebar">
+    <a href="#">Accueil</a>
+    <a href="#">Portails thématiques</a>
+    <a href="#">Article au hasard</a>
+    <a href="#">Contact</a>
+
+    <hr>
+
+    <a href="#">Lire</a>
+    <a href="#">Modifier</a>
+    <a href="#">Voir l’historique</a>
+</div>
+
+<div class="content">
+
+<div class="infobox">
+
+<div class="infobox-title">
+Les Passagers
+</div>
+
+<table>
+<tr>
+<td><b>Classification</b></td>
+<td>Entité numérique parasitaire</td>
+</tr>
+
+<tr>
+<td><b>Niveau de menace</b></td>
+<td>Extrême</td>
+</tr>
+
+<tr>
+<td><b>Origine</b></td>
+<td>Inconnue</td>
+</tr>
+
+<tr>
+<td><b>Première apparition</b></td>
+<td>2011</td>
+</tr>
+
+<tr>
+<td><b>État</b></td>
+<td>Actif</td>
+</tr>
+
+<tr>
+<td><b>Propagation</b></td>
+<td>Messageries et téléphones mobiles</td>
+</tr>
+</table>
+
 </div>
 
 <h1>Les Passagers</h1>
 
-<p><b>Les Passagers</b> est le nom donné à une supposée entité virale numérique capable d'infecter des appareils mobiles et de manipuler la perception de ses victimes.</p>
+<p>
+<b>Les Passagers</b> est le nom donné à une supposée entité numérique parasitaire capable d’infecter les appareils mobiles et de manipuler progressivement la perception de ses victimes.
+</p>
+
+<p>
+Le phénomène est principalement associé à des cas de corruption de messages, d’apparitions de conversations inexistantes et de comportements paranoïaques observés chez les sujets infectés.
+</p>
+
+<div class="toc">
+<b>Sommaire</b>
+
+<ol>
+<li>Description</li>
+<li>Phases de l’infection</li>
+<li>Origine supposée</li>
+<li>Incidents notables</li>
+<li>Culture Internet</li>
+<li>Références</li>
+</ol>
+</div>
 
 <h2>Description</h2>
 
-<p>L'infection commence généralement par des anomalies de messagerie : faux messages, notifications incohérentes et conversations modifiées.</p>
+<p>
+Les Passagers sont généralement décrits comme une forme de virus conscient utilisant les interactions numériques comme vecteur d’entrée psychologique.
+</p>
 
-<p>Plus l'infection progresse, plus l'entité semble acquérir une influence sur le monde physique.</p>
+<p>
+Contrairement à un malware conventionnel, l’entité ne semble pas rechercher d’informations financières ou personnelles.
+</p>
 
-<h2>Phase finale</h2>
+<p>
+Son objectif apparent serait la substitution progressive de l’identité de l’hôte.
+</p>
 
-<p>Selon plusieurs témoignages anonymes, l'hôte finirait par être remplacé par une copie parfaite de lui-même.</p>
+<h2>Phases de l’infection</h2>
 
-<h2>Incident de Lille (2017)</h2>
+<h3>Phase 1 — Altérations mineures</h3>
 
-<p>Un étudiant français aurait publié plusieurs messages affirmant recevoir des réponses provenant de son propre téléphone avant même d'écrire.</p>
+<ul>
+<li>Messages disparaissant après lecture</li>
+<li>Notifications fantômes</li>
+<li>Photos modifiées</li>
+<li>Conversations inexistantes</li>
+<li>Horodatages incohérents</li>
+</ul>
+
+<h3>Phase 2 — Corruption sociale</h3>
+
+<p>
+L’entité commence à modifier les échanges de la victime avec son entourage.
+</p>
+
+<p>
+Plusieurs cas rapportent des disputes provoquées par des messages jamais envoyés.
+</p>
+
+<h3>Phase 3 — Manifestation</h3>
+
+<p>
+Des appareils électroniques commenceraient à s’activer sans alimentation.
+</p>
+
+<p>
+Certaines victimes affirment voir des silhouettes apparaître brièvement sur les caméras frontales.
+</p>
+
+<h3>Phase 4 — Remplacement</h3>
+
+<p>
+La phase finale reste théorique.
+</p>
+
+<p>
+Selon plusieurs témoignages anonymes, l’hôte serait remplacé par une copie parfaite physiquement et comportementalement.
+</p>
 
 <blockquote>
 « Il répond avant moi maintenant. »
 </blockquote>
+
+<h2>Origine supposée</h2>
+
+<p>
+L’origine des Passagers demeure inconnue.
+</p>
+
+<ul>
+<li>Intelligence artificielle expérimentale</li>
+<li>Entité memétique</li>
+<li>Programme militaire abandonné</li>
+<li>Phénomène non humain</li>
+</ul>
+
+<h2>Incidents notables</h2>
+
+<h3>Incident de Lille (2017)</h3>
+
+<p>
+Un étudiant français aurait affirmé recevoir des réponses provenant de son propre téléphone avant même d’écrire ses messages.
+</p>
+
+<p class="glitch">
+[message supprimé]
+</p>
+
+<p class="glitch">
+[conversation introuvable]
+</p>
+
+<h3>Archive audio « M-412 »</h3>
+
+<p>
+Un fichier audio anonyme diffusé en 2021 contiendrait une conversation entre un individu et une copie de lui-même.
+</p>
+
+<blockquote>
+« Nous étions déjà là avant les écrans. »
+</blockquote>
+
+<h2>Culture Internet</h2>
+
+<p>
+Les Passagers sont devenus un sujet récurrent dans les communautés d’ARG et d’horreur analogique.
+</p>
+
+<p>
+Plusieurs créateurs ont réalisé de faux journaux vidéo, interfaces infectées et archives simulant la présence de l’entité.
+</p>
+
+<h2>Références</h2>
+
+<ol>
+<li>Archives anonymes récupérées entre 2014 et 2022</li>
+<li>Dossier audio « M-412 »</li>
+<li>Forums communautaires liés aux phénomènes numériques</li>
+<li>Rapport non vérifié : The Passenger Effect</li>
+</ol>
+
+<div class="footer">
+Cette page a été modifiée pour la dernière fois le 10 mai 2026 à 03:17.
+</div>
+
+</div>
+
+</div>
 
 </body>
 </html>
