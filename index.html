@@ -1,41 +1,133 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>💚VIRUS😜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYSTEM FAILURE // PASSENGERS</title>
 
 <style>
+
 body{
-    background:#0d0d0d;
-    color:#aaa;
+    margin:0;
+    background:black;
+    color:#00ff88;
     font-family:monospace;
-    padding:50px;
+    overflow:hidden;
+}
+
+.scanlines::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.02) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events:none;
+    animation:glitch 2s infinite;
+}
+
+@keyframes glitch{
+    0%{transform:translate(0)}
+    20%{transform:translate(-1px,1px)}
+    40%{transform:translate(1px,-1px)}
+    60%{transform:translate(-2px,0)}
+    80%{transform:translate(2px,1px)}
+    100%{transform:translate(0)}
+}
+
+.container{
+    padding:40px;
+}
+
+h1{
+    font-size:28px;
+    color:red;
+    animation:flicker 1s infinite;
+}
+
+@keyframes flicker{
+    0%{opacity:1}
+    50%{opacity:0.3}
+    100%{opacity:1}
+}
+
+.glitch{
+    color:#00ff88;
+    text-shadow:0 0 5px #00ff88;
+}
+
+.corrupt{
+    color:transparent;
+    position:relative;
+}
+
+.corrupt::after{
+    content:"DATA CORRUPTED";
+    color:red;
+    position:absolute;
+    left:0;
 }
 
 a{
-    color:#0d0d0d;
+    color:#00ff88;
     text-decoration:none;
+    opacity:0.1;
 }
 
-.hidden{
-    opacity:0.03;
-    font-size:12px;
+a:hover{
+    opacity:1;
 }
+
+.warning{
+    color:red;
+    margin-top:20px;
+    animation:flicker 0.5s infinite;
+}
+
 </style>
+
 </head>
 
-<body>
+<body class="scanlines">
 
-<h1>Rapport système</h1>
+<div class="container">
 
-<p>Analyse terminée. Aucune anomalie détectée.</p>
+<h1>SYSTEM BREACH DETECTED</h1>
 
-<p class="hidden">
-c'est déjà trop tard
-</p>
+<p class="warning">/// UNKNOWN PROCESS ACTIVE ///</p>
 
-<!-- lien caché dans le noir -->
-<a href="access.html">.</a>
+<p class="glitch">memory integrity: 34%</p>
+<p class="glitch">signal: unstable</p>
+<p class="corrupt">user session: ?????</p>
+
+<br>
+
+<p class="glitch">incoming transmission...</p>
+
+<!-- lien caché -->
+
+<a href="access.html">access node</a>
+
+<p class="warning">DO NOT TRUST DISPLAYED DATA</p>
+
+</div>
+
+<script>
+// petite corruption visuelle aléatoire
+setInterval(()=>{
+    const el = document.querySelectorAll("p, h1");
+    const target = el[Math.floor(Math.random()*el.length)];
+    if(target && Math.random()>0.7){
+        target.innerText = target.innerText.split("").reverse().join("");
+    }
+},3000);
+</script>
 
 </body>
 </html>
+
