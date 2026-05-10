@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Accès sécurisé</title>
+
+<style>
+body{
+    background:black;
+    color:#00ff88;
+    font-family:monospace;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    flex-direction:column;
+}
+
+input, button{
+    padding:10px;
+    margin-top:10px;
+    background:black;
+    border:1px solid #00ff88;
+    color:#00ff88;
+}
+
+button{
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h2>AUTHORIZATION REQUIRED</h2>
+
+<p>Enter password :</p>
+
+<input id="pwd" placeholder="••••••••">
+<button onclick="check()">ENTER</button>
+
+<p id="msg"></p>
+
+<script>
+
+function check(){
+    const value = document.getElementById("pwd").value;
+
+    // MOT DE PASSE SECRET
+    if(value === "PASSAGER-17"){
+        window.location.href = "index.html";
+    } else {
+        document.getElementById("msg").innerText = "ACCESS DENIED";
+    }
+}
+
+</script>
+
+</body>
+</html>
