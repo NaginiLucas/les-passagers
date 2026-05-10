@@ -4,130 +4,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SYSTEM FAILURE // PASSENGERS</title>
+<title>⚠️ SYSTEM ALERT // PASSENGERS.EXE ⚠️</title>
 
 <style>
 
 body{
     margin:0;
-    background:black;
-    color:#00ff88;
+    background:linear-gradient(135deg,#000000,#0b0b0b);
+    color:#39ff14;
     font-family:monospace;
     overflow:hidden;
+    text-align:center;
 }
 
-.scanlines::before{
-    content:"";
+.glitch-bg{
     position:fixed;
     inset:0;
     background:repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.02),
-        rgba(255,255,255,0.02) 1px,
+        90deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 2px,
         transparent 2px,
-        transparent 4px
+        transparent 6px
     );
+    animation:move 3s infinite linear;
     pointer-events:none;
-    animation:glitch 2s infinite;
 }
 
-@keyframes glitch{
-    0%{transform:translate(0)}
-    20%{transform:translate(-1px,1px)}
-    40%{transform:translate(1px,-1px)}
-    60%{transform:translate(-2px,0)}
-    80%{transform:translate(2px,1px)}
-    100%{transform:translate(0)}
+@keyframes move{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(10px)}
 }
 
 .container{
-    padding:40px;
+    padding:60px;
 }
 
 h1{
-    font-size:28px;
-    color:red;
-    animation:flicker 1s infinite;
+    font-size:32px;
+    color:#ff2e2e;
+    animation:blink 1s infinite;
 }
 
-@keyframes flicker{
+@keyframes blink{
     0%{opacity:1}
-    50%{opacity:0.3}
+    50%{opacity:0.2}
     100%{opacity:1}
 }
 
-.glitch{
-    color:#00ff88;
-    text-shadow:0 0 5px #00ff88;
+.box{
+    background:rgba(0,255,100,0.05);
+    border:1px dashed #39ff14;
+    padding:20px;
+    margin:20px auto;
+    width:80%;
+    border-radius:12px;
 }
 
-.corrupt{
-    color:transparent;
-    position:relative;
+.warning{
+    color:#ffea00;
+    font-size:18px;
 }
 
-.corrupt::after{
-    content:"DATA CORRUPTED";
-    color:red;
-    position:absolute;
-    left:0;
+.big{
+    font-size:22px;
+}
+
+.emoji{
+    font-size:28px;
 }
 
 a{
-    color:#00ff88;
+    color:#39ff14;
     text-decoration:none;
-    opacity:0.1;
+    font-weight:bold;
+    font-size:18px;
+    opacity:0.3;
 }
 
 a:hover{
     opacity:1;
+    text-shadow:0 0 10px #39ff14;
 }
 
-.warning{
-    color:red;
-    margin-top:20px;
-    animation:flicker 0.5s infinite;
+.popup{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:black;
+    border:1px solid #39ff14;
+    padding:10px 20px;
+    animation:pop 2s infinite;
+}
+
+@keyframes pop{
+    0%{transform:translateX(-50%) scale(1)}
+    50%{transform:translateX(-50%) scale(1.05)}
+    100%{transform:translateX(-50%) scale(1)}
 }
 
 </style>
 
 </head>
 
-<body class="scanlines">
+<body>
+
+<div class="glitch-bg"></div>
+
+<div class="popup">📡 SYSTEM NOTIFICATION</div>
 
 <div class="container">
 
-<h1>SYSTEM BREACH DETECTED</h1>
+<h1>⚠️ PASSENGERS.EXE ACTIVÉ ⚠️</h1>
 
-<p class="warning">/// UNKNOWN PROCESS ACTIVE ///</p>
+<p class="warning">🚨 VOS DONNÉES ONT ÉTÉ COLLECTÉES AVEC SUCCÈS 🚨</p>
 
-<p class="glitch">memory integrity: 34%</p>
-<p class="glitch">signal: unstable</p>
-<p class="corrupt">user session: ?????</p>
+<div class="box">
+<p class="emoji">📱✨ ANALYSE TERMINÉE ✨📱</p>
+<p>Merci pour votre contribution volontaire 😄</p>
+<p class="big">🎁 Votre identité a été sauvegardée 🎁</p>
+</div>
 
-<br>
+<div class="box">
+<p>📡 Transmission en cours vers LES PASSAGERS...</p>
+<p>💾 Données transférées : 100%</p>
+</div>
 
-<p class="glitch">incoming transmission...</p>
+<div class="box">
+<p class="warning">⚠️ NE FERMEZ PAS CETTE PAGE ⚠️</p>
+<p>Sinon le processus peut être interrompu 😢</p>
+</div>
 
-<!-- lien caché -->
+<!-- bouton secret -->
 
-<a href="access.html">access node</a>
-
-<p class="warning">DO NOT TRUST DISPLAYED DATA</p>
+<a href="access.html">🔓 continuer l’analyse</a>
 
 </div>
 
 <script>
-// petite corruption visuelle aléatoire
 setInterval(()=>{
-    const el = document.querySelectorAll("p, h1");
-    const target = el[Math.floor(Math.random()*el.length)];
-    if(target && Math.random()>0.7){
-        target.innerText = target.innerText.split("").reverse().join("");
-    }
-},3000);
+    const messages=[
+        "📡 transfert OK",
+        "💾 sauvegarde utilisateur...",
+        "😄 merci pour votre donation de données",
+        "🧠 personnalité analysée",
+        "📱 téléphone synchronisé"
+    ];
+
+    const msg=document.createElement("div");
+    msg.innerText=messages[Math.floor(Math.random()*messages.length)];
+    msg.style.position="fixed";
+    msg.style.left=Math.random()*100+"vw";
+    msg.style.top=Math.random()*100+"vh";
+    msg.style.color="#39ff14";
+    msg.style.opacity="0.7";
+    document.body.appendChild(msg);
+
+    setTimeout(()=>msg.remove(),3000);
+
+},1500);
 </script>
 
 </body>
 </html>
-
