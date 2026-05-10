@@ -44,13 +44,11 @@ button{
 <script>
 
 function check(){
-    const value = document.getElementById("code").value;
+    const value = document.getElementById("pwd").value;
 
-    if(value.trim().toUpperCase() === "PASSAGER-17"){
-        document.body.innerHTML = "<h1 style='color:#00ff88;font-family:monospace;'>ACCESS GRANTED</h1>";
-        setTimeout(()=>{
-            window.location.href = "passagers.html";
-        },1500);
+    // MOT DE PASSE SECRET
+    if(value === "PASSAGER-17"){
+        window.location.href = "index.html";
     } else {
         document.getElementById("msg").innerText = "ACCESS DENIED";
     }
