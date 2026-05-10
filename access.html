@@ -46,8 +46,11 @@ button{
 function check(){
     const value = document.getElementById("code").value;
 
-    if(value.trim().toUpperCase() === "PASSAGER_17"){
-        window.location.href = "passagers.html";
+    if(value.trim().toUpperCase() === "PASSAGER-17"){
+        document.body.innerHTML = "<h1 style='color:#00ff88;font-family:monospace;'>ACCESS GRANTED</h1>";
+        setTimeout(()=>{
+            window.location.href = "passagers.html";
+        },1500);
     } else {
         document.getElementById("msg").innerText = "ACCESS DENIED";
     }
