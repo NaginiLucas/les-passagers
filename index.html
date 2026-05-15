@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>⚠️ SYSTEM ALERT // PASSENGERS.EXE ⚠️</title>
+<title>⚠️ PASSENGERS.EXE ⚠️</title>
 
 <style>
 
@@ -38,6 +38,8 @@ body{
 
 .container{
     padding:60px;
+    position:relative;
+    z-index:2;
 }
 
 h1{
@@ -74,19 +76,6 @@ h1{
     font-size:28px;
 }
 
-a{
-    color:#39ff14;
-    text-decoration:none;
-    font-weight:bold;
-    font-size:18px;
-    opacity:0.3;
-}
-
-a:hover{
-    opacity:1;
-    text-shadow:0 0 10px #39ff14;
-}
-
 .popup{
     position:fixed;
     top:20px;
@@ -104,6 +93,36 @@ a:hover{
     100%{transform:translateX(-50%) scale(1)}
 }
 
+/* bouton secret */
+
+.secret{
+    position:fixed;
+    bottom:10px;
+    right:10px;
+    opacity:0.03;
+    text-decoration:none;
+    font-size:14px;
+    color:#39ff14;
+}
+
+.secret:hover{
+    opacity:1;
+}
+
+/* faux texte corrompu */
+
+.corrupt{
+    opacity:0.15;
+    font-size:12px;
+    margin-top:30px;
+    user-select:none;
+}
+
+.hidden-pass{
+    color:#0b0b0b;
+    font-size:1px;
+}
+
 </style>
 
 </head>
@@ -112,13 +131,17 @@ a:hover{
 
 <div class="glitch-bg"></div>
 
-<div class="popup">📡 SYSTEM NOTIFICATION</div>
+<div class="popup">
+📡 THANK YOU FOR YOUR DATA 📡
+</div>
 
 <div class="container">
 
 <h1>⚠️ PASSENGERS.EXE ACTIVÉ ⚠️</h1>
 
-<p class="warning">🚨 VOS DONNÉES ONT ÉTÉ COLLECTÉES AVEC SUCCÈS 🚨</p>
+<p class="warning">
+🚨 VOS DONNÉES ONT ÉTÉ COLLECTÉES AVEC SUCCÈS 🚨
+</p>
 
 <div class="box">
 <p class="emoji">📱✨ ANALYSE TERMINÉE ✨📱</p>
@@ -127,43 +150,76 @@ a:hover{
 </div>
 
 <div class="box">
-<p>📡 Transmission en cours vers LES PASSAGERS...</p>
-<p>💾 Données transférées : 100%</p>
+<p>📡 Synchronisation des contacts...</p>
+<p>💾 Lecture des messages privés...</p>
+<p>🧠 Analyse comportementale : TERMINÉE</p>
 </div>
 
 <div class="box">
-<p class="warning">⚠️ NE FERMEZ PAS CETTE PAGE ⚠️</p>
-<p>Sinon le processus peut être interrompu 😢</p>
+<p class="warning">
+⚠️ NE CLIQUEZ PAS SUR ENTER ⚠️
+</p>
+<p>
+Sinon ils sauront que vous avez vu le message.
+</p>
+</div>
+
+<div class="box">
+<p>😄 Merci de votre donation de données !</p>
+<p>📱 Téléphone ajouté au réseau PASSENGERS</p>
+</div>
+
+<!-- mot de passe caché -->
+
+<p class="hidden-pass">
+do_not_press_enter
+</p>
+
+<!-- faux texte bizarre -->
+
+<p class="corrupt">
+user://infected_session/passenger_node_17/enter_not_recommended
+</p>
+
 </div>
 
 <!-- bouton secret -->
 
-<a href="access.html">🔓 continuer l’analyse</a>
-
-</div>
+<a class="secret" href="access.html">
+[system access]
+</a>
 
 <script>
+
 setInterval(()=>{
+
     const messages=[
         "📡 transfert OK",
         "💾 sauvegarde utilisateur...",
         "😄 merci pour votre donation de données",
         "🧠 personnalité analysée",
-        "📱 téléphone synchronisé"
+        "📱 téléphone synchronisé",
+        "⚠️ ne cliquez pas sur ENTER",
+        "👁️ ils regardent vos messages"
     ];
 
     const msg=document.createElement("div");
+
     msg.innerText=messages[Math.floor(Math.random()*messages.length)];
+
     msg.style.position="fixed";
     msg.style.left=Math.random()*100+"vw";
     msg.style.top=Math.random()*100+"vh";
     msg.style.color="#39ff14";
-    msg.style.opacity="0.7";
+    msg.style.opacity="0.5";
+    msg.style.fontSize=(Math.random()*10+12)+"px";
+
     document.body.appendChild(msg);
 
     setTimeout(()=>msg.remove(),3000);
 
-},1500);
+},1200);
+
 </script>
 
 </body>
